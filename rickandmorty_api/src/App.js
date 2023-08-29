@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import Navbar from './Components/Navbar/Navbar';
+import Character from './Components/Character/Character'
 
 function App() {
 
@@ -13,8 +14,8 @@ function App() {
 //INDIco la ruta o el endpoint de la api
   const URI = "https://rickandmortyapi.com/api/character"
   
-  const getCharacters = () => {
-    fetch()
+  const getCharacters = (URI) => {
+    fetch(URI)
     //esta respuesta la tenemos que convertir  a un objeto de js
     .then((response) => response.json())
     .then(data => setResults(data.results))
@@ -27,15 +28,13 @@ function App() {
     getCharacters(URI) //CUANDO SE CARGUE EL COMPONENTE, LLAMA AL METODO Y EJECUTA LA FUNCION ANTERIOR.
   }, [] )
   
-  return (
-    
-      <>
-       <Navbar brand="Rick and Morty">
+ // TENEMOS NUESTROS COMPONENTES
 
-       </Navbar>
-      </>
-    )
-  );
+ return (
+  <>
+   <Navbar brand="Rick and Morty"/>
+  </>
+);
 }
 
 export default App;
