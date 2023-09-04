@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react' 
 
             // aquí hacemos uso de las props
 const Navbar = ({brand}) => {

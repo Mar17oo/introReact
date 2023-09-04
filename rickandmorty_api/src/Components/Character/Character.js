@@ -1,13 +1,14 @@
 import React from 'react'
-
-const Character = ({character}) =>{
+////className="col-lg-3 col-md-6 col-sm-12 mb-4" es para tener un resppnsive design.
+// p*3 repetir p
+const Character = ({character}) =>{ //rafc es un template, usar esas palabras.
     return(
         <div className="container">
-            <div className='row'>
+            <div className= "row"> 
                 {
-                    character.map((item,index) =>
+                    character.map((item,index)  //item and index son parametros puede ser cualquier nombre que le quiera da rpara guraar
                     (
-                        <div key={index} className="col-lg-3 col-md-6 col-sm-12 mb-4">
+                        <div key={index} className="col-lg-3 col-md-6 col-sm-12 mb-4">  
                             <div className="card">
                                 <img className="card-img-top" src={item.image} alt= "character"/>
                                 <div className="card-body">
@@ -27,3 +28,5 @@ const Character = ({character}) =>{
         </div>
     )
 }
+
+export default Character
