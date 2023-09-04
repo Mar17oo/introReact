@@ -6,8 +6,8 @@ function App() {
 
   //TENEMOS NUESTRA L+OGICA
 // Con los corchetes [] LE INDICO QUE MI ESTADO ESTA VACIO Y QUE SE VA A LLEVAR /POBLAR DE LOS DATOS QUE VIEBE EN LA API
-  const [character, setResults] = useState([]) //Ele
-  const [info, setInfo] = useState ({})
+  const [character, setResults] = useState([]) //Elegir useStateSnippet es un hook, la primera es varieble (character), la sefunda es una funcion(seResult). 
+  const [info, setInfo] = useState([])
   //fetch("https://rickandmortyapi.com/api/character")
   //.then(response =>  response.json())
   //.then(data => console.log(data))
@@ -24,36 +24,24 @@ function App() {
     .catch((error) => console.log(error)) 
   }
   
-// ESTÁS DOS NUEVAS FUNCIONES HARAN UNA NUEVA LLAMA A LA MISMA API
-// PERO A DIFERENTES RUTAS 
-
-const onPrevious = () => {
-  getCharacters(info.prev)
-}
-
-const onNext = () => {
-  getCharacters(info.next)
-}
   //CON DEPENDECIA VACIA [], LA LLAMADA SE EEJECUTA UNA VEZ RN LO QUE SE CARGA MI COMPONENTE
   // Y SE RENDERIZA. USEEFFECT hace el llamado a la API
   useEffect(() => {
     getCharacters(URI) //CUANDO SE CARGUE EL COMPONENTE, LLAMA AL METODO Y EJECUTA LA FUNCION ANTERIOR.
   }, [] ) 
   
-  // TENEMOS NUESTROS COMPONENTES
-  return (
-    <>
-    <Navbar brand="Rick and Morty"/>
+ // TENEMOS NUESTROS COMPONENTES
+ return (
+  <>
+   <Navbar brand="Rick and Morty"/>
 
-    <div className="container">
-        {/* pasamos el array a la props */}
-      <Pagination prev={info.prev} next={info.next} onPrevious={onPrevious} onNext={onNext} />
-      <Character character={character} />
-      <Pagination prev={info.prev} next={info.next} onPrevious={onPrevious} onNext={onNext} />
-    </div>
+  <div className="container">
+    <Character character={character} />
+    <Pagination/>
+  </div>
 
-    </>
-  );
+  </>
+);
 }
 
 export default App;
