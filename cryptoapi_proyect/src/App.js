@@ -1,38 +1,29 @@
 import React, {useEffect, useState} from 'react'
-import Buscador from './Components/Buscador/Buscador';
-
+import Buscador from './Components/Buscador/Buscador'
+import Coin from './Components/Coins/Coins'
 
 function App() {
-  // Estado para rastrear el término de búsqueda del usuario
   const [search, setSearch] = useState('');
-  // Estado para almacenar los resultados de la búsqueda
-  const [results, setResults] = useState([]);
+  const [data, setData] = useState([]);
 
-  // useEffect se utiliza para realizar la búsqueda cada vez que cambia el search
   useEffect(() => {
-    // Si el término de búsqueda está vacío, se pueden borrar los resultados.
-    if (search.trim() === '') {
-      setResults([]);
-      return;
-    }
-
-    // Realiza una solicitud a la API de CoinGecko con el término de búsqueda
-    fetch(`https://api.coingecko.com/api/v3/search?${new URLSearchParams({ q: search })}`)
+    // Realizar la solicitud a la API
+    fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false')
       .then(response => response.json())
       .then(data => {
-        // Almacena los resultados de la búsqueda en el estado results
-        setResults(data);
+        // Almacenar los datos en el estado
+        setData(data);
       })
-      .catch(error => console.error('Error fetching data:', error));
-  }, [search]);
+      .catch(error => console.error('Error', error));
+  }, []);
 
-  // TENEMOS NUESTROS COMPONENTES
   return (
-    <div className="container">
-      {/* Pasamos el array a la prop 'buscador' */}
-      <Buscador buscador={results} setSearch={setSearch} />
+    <div className="container my-6 " >
+      <Buscador search={search} setSearch={setSearch} />
+      <Coin data={data} />
     </div>
   );
 }
+
 
 export default App;
