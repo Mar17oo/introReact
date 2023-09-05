@@ -6,6 +6,7 @@ const Coins = ({ data }) => {
       <thead>
         <tr className="table-primary"> 
         <th>#</th>
+        <th></th>
           <th>Coin</th>
           <th>Symbol</th>
           <th>Current Price (USD)</th>
@@ -17,6 +18,7 @@ const Coins = ({ data }) => {
         {data.map((coin, index) => (
           <tr key={index} className="table-danger">
             <td>{coin.market_cap_rank}</td>
+            <img className="card-img-top" src={coin.image} alt="Coin"/>
             <td>{coin.name}</td>
             <td className='fw-light fs-6' >{coin.symbol}</td>
             <td>{coin.current_price}</td>

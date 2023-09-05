@@ -11,7 +11,6 @@ const Buscador = ({ search, setSearch }) => {
           className="form-control"
           placeholder="Search"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
         />
       </div>
     </div>
