@@ -20,10 +20,29 @@ function App() {
     fetch(URI)
     //esta respuesta la tenemos que convertir  a un objeto de js
     .then((response) => response.json())
-    .then(data => setResults(data.results)) // los 'results' es del api el 'data' es el nombre d ela variable que almacena ese  result.
-    .catch((error) => console.log(error)) 
+    .then((data) => {
+      setResults(data.results)
+      setInfo(data.info)
+    })
+    .catch((error) => console.log(error))
   }
   
+  // ESTÁS DOS NUEVAS FUNCIONES HARAN UNA NUEVA LLAMA A LA MISMA API
+// PERO A DIFERENTES RUTAS 
+
+const onPrevious = () => {
+  getCharacters(info.prev)
+}
+
+const onNext = () => {
+  getCharacters(info.next)
+}
+
+  // CON DEPENDENCIA VACIA, LA LLAMADA SE EJECUTA UNA VEZ EN LO QUE SE CARGA MI COMPONENTE
+  // Y SE RENDERIZA.
+  useEffect(() => {
+    getCharacters(URI)//CUANDO SE CARGUE EL COMPONENTE, LLAMA AL METODO Y EJECUTA LA FUNCIÓN ANTERIOR
+  }, [])
   //CON DEPENDECIA VACIA [], LA LLAMADA SE EEJECUTA UNA VEZ RN LO QUE SE CARGA MI COMPONENTE
   // Y SE RENDERIZA. USEEFFECT hace el llamado a la API
   useEffect(() => {
@@ -36,8 +55,10 @@ function App() {
    <Navbar brand="Rick and Morty"/>
 
   <div className="container">
+      {/* pasamos el array a la props */}
+    <Pagination prev={info.prev} next={info.next} onPrevious={onPrevious} onNext={onNext} />
     <Character character={character} />
-    <Pagination/>
+    <Pagination prev={info.prev} next={info.next} onPrevious={onPrevious} onNext={onNext} />
   </div>
 
   </>
