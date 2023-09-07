@@ -1,0 +1,8 @@
+/* Paleta de colores de Rick & Morty */
+:root {
+    --rick-purple: #8b78e6; /* Morado Rick */
+    --morty-blue: #6ec1e4; /* Azul Morty */
+    --green-radioactive: #2ecc71; /* Verde Radioactivo */
+    --intergalactic-violet: #cc66ff; /* Violeta Intergaláctico */
+    --alien-red: #ff4d4d; /* Rojo Alienígena */
+  }

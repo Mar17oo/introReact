@@ -8,11 +8,11 @@ const Character = ({character}) =>{ //rafc es un template, usar esas palabras.
             { 
                 character.map((item, index) => (
                     <div key={index} className="col-lg-3 col-md-6 col-sm-12 mb-4">
-                        <div className="card" style={{minWidth: "250px"}}>
+                        <div className="card h-100 animate__animated animate__bounce  bg-primary" style={{minWidth: "250px"}}>
                             <img className="card-img-top" src={item.image} alt="character"/>
                             <div className="card-body">
                                 <h2 className="card-title">{item.name}</h2>
-                                <h3 className="card-title">ID: {item.id}</h3>
+                                <h3 className="card-subtitle mb-2 text-muted">ID: {item.id}</h3>
                                 <hr />
                                 <p className="card-text">Species: {item.species}</p>
                                 <p className="card-text">Gender: {item.gender}</p>
